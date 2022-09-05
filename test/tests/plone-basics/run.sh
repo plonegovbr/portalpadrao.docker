@@ -17,7 +17,7 @@ get() {
 		--link "$cname":plone \
 		--entrypoint /plone/instance/bin/zopepy \
 		"$image" \
-		-c "from six.moves.urllib.request import urlopen; con = urlopen('$1'); print(con.read())"
+		-c "from six.moves.urllib.request import urlopen, Request; request = Request('$1'); request.add_header('Accept-Language','pt-BR,en;q=0.5');print(urlopen(request).read())"
 }
 
 get_auth() {
@@ -25,7 +25,7 @@ get_auth() {
 		--link "$cname":plone \
 		--entrypoint /plone/instance/bin/zopepy \
 		"$image" \
-		-c "from six.moves.urllib.request import urlopen, Request; request = Request('$1'); request.add_header('Authorization', 'Basic $2'); print(urlopen(request).read())"
+		-c "from six.moves.urllib.request import urlopen, Request; request = Request('$1'); request.add_header('Authorization', 'Basic $2'); request.add_header('Accept-Language','pt-BR,en;q=0.5');print(urlopen(request).read())"
 }
 
 
