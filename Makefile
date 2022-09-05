@@ -39,7 +39,7 @@ create-tag: # Create a new tag using git
 
 commit-release: # Commit new version change and create tag
 	@echo "Commiting changes"
-	@git commit -am "Use Plone $(IMAGE_TAG)"
+	@git commit -am "Portal Padrão versão $(IMAGE_TAG)"
 	make create-tag
 
 .PHONY: build-image
