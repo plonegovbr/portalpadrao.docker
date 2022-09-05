@@ -5,8 +5,8 @@ ENV PIP=9.0.3 \
     SETUPTOOLS=38.7.0 \
     WHEEL=0.33.1 \
     PLONE_MAJOR=4.3 \
-    PLONE_VERSION=4.3.2 \
-    PLONE_MD5=d34e2f3d0a6df673c4add0d6fe4f965c
+    PLONE_VERSION=4.3.3 \
+    PLONE_MD5=0fbf96851d5d1c08967e980343482999
 
 RUN useradd --system -m -d /plone -U -u 500 plone \
     && mkdir -p /plone/instance/ /data/filestorage /data/blobstorage
@@ -25,7 +25,7 @@ RUN buildDeps="dpkg-dev gcc libbz2-dev libc6-dev libjpeg62-turbo-dev libopenjp2-
 
 COPY buildout.cfg /plone/instance/
 
-ENV PORTAL_PADRAO=1.0.3
+ENV PORTAL_PADRAO=1.0.4
 
 RUN  wget -O /plone/instance/portal-padrao-versions.cfg https://raw.githubusercontent.com/plonegovbr/portalpadrao.release/master/$PORTAL_PADRAO/versions.cfg \
  && cd /plone/instance \
