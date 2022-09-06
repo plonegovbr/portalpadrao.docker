@@ -25,7 +25,7 @@ RUN buildDeps="dpkg-dev gcc libbz2-dev libc6-dev libjpeg62-turbo-dev libopenjp2-
 
 COPY buildout.cfg /plone/instance/
 
-ENV PORTAL_PADRAO=1.1.3.1
+ENV PORTAL_PADRAO=1.1.4
 
 RUN  wget -O /plone/instance/portal-padrao-versions.cfg https://raw.githubusercontent.com/plonegovbr/portalpadrao.release/master/$PORTAL_PADRAO/versions.cfg \
  && cd /plone/instance \
