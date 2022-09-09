@@ -14,7 +14,19 @@ def extract_version(path: Path) -> str:
     match = re.search(PATTERN, data)
     version = match.groups()[0]
     parts = version.split(".")
-    parts = parts[:3] if len(parts) >=3 else parts + ["0"]
-    return f"{parts[0]}.{parts[1]}.{parts[2]}"
+    parts_size = len(parts)
+    if parts_size >=3:
+        major, minor, patch = parts[:3]
+    elif parts_size == 2:
+        major = parts[0]
+        minor = parts[1]
+        match = re.match(r"^(?P<digits>\d{1,2})(?P<patch>.*)$", minor)
+        if match:
+            groups = match.groupdict()
+            minor = groups["digits"]
+            patch = f"0{groups['patch']}"
+        else:
+            patch = "0"
+    return f"{major}.{minor}.{patch}"
 
 print(extract_version(DOCKERFILE))
